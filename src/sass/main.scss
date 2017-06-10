@@ -1,0 +1,35 @@
+$colors: ( blue: #2980b9, black: #000000, white: #ffffff, );
+$full-width: 100%;
+@function style-variation($style) {
+    @if map-has-key($colors, $style) {
+        @return map-get($colors, $style);
+    }
+    @error "Invalid color: '#{$style}'.";
+}
+
+body {
+    background-color: style-variation(white);
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+.message {
+    border: 1px solid #ccc;
+    padding: 10px;
+    color: #333;
+}
+
+.success {
+    @extend .message;
+    border-color: green;
+}
+
+.error {
+    @extend .message;
+    border-color: red;
+}
+
+.warning {
+    @extend .message;
+    border-color: yellow;
+}
