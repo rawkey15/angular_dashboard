@@ -1,16 +1,8 @@
 {
-  "name": "angular_dashboard",
-  "description": "",
-  "scripts": {
-  },
-  "env": {
-  },
-  "formation": {
-  },
-  "addons": [
-
-  ],
-  "buildpacks": [
-
-  ]
+    "name": "Angular Dashboard",
+    "description": "A dashboard Node.js app using Express 4 and Angularjs",
+    "repository": "https://github.com/rawkey15/angular_dashboard",
+    "logo": "",
+    "keywords": ["node", "express", "heroku", "angular"],
+    "image": ""
 }
