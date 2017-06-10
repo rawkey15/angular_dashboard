@@ -25,6 +25,7 @@
     },
     "homepage": "https://github.com/rawkey15/angular_dashboard#readme",
     "dependencies": {
-        "express": "^4.15.3"
+        "express": "^4.15.3",
+        "bootstrap": "^3.3.7"
     }
 }
