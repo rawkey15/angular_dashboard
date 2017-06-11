@@ -34,7 +34,7 @@ function root(__path) {
 
 var _app = mapFiles(['./src/js/**/*.js']);
 var copyFromPath = path.join(__dirname, 'node_modules/');
-var copyToPath = path.join(__dirname, 'dist/js/lib/');
+var copyToPath = path.join(__dirname, 'dist/');
 
 var jsModuleConfig = {
     entry: {
@@ -55,11 +55,17 @@ var jsModuleConfig = {
             root('./src') // location of your src
         ),
         new CopyWebpackPlugin([
-            { from: copyFromPath + 'angular/angular.min.js', to: copyToPath },
-            { from: copyFromPath + 'bootstrap/dist/js/bootstrap.min.js', to: copyToPath },
-            { from: copyFromPath + 'jquery/dist/jquery.min.js', to: copyToPath },
-            { from: copyFromPath + 'angular-ui-router/release/angular-ui-router.min.js', to: copyToPath },
-            { from: copyFromPath + 'underscore/underscore-min.js', to: copyToPath }
+            { from: copyFromPath + 'angular/angular.min.js', to: copyToPath + 'js/lib/' },
+            { from: copyFromPath + 'bootstrap/dist/js/bootstrap.min.js', to: copyToPath + 'js/lib/' },
+            { from: copyFromPath + 'jquery/dist/jquery.min.js', to: copyToPath + 'js/lib/' },
+            { from: copyFromPath + 'angular-ui-router/release/angular-ui-router.min.js', to: copyToPath + 'js/lib/' },
+            { from: copyFromPath + 'underscore/underscore-min.js', to: copyToPath + 'js/lib/' },
+            { from: copyFromPath + 'requirejs/require.js', to: copyToPath + 'js/lib/' },
+            { from: copyFromPath + 'bootstrap/dist/css/bootstrap.min.css', to: copyToPath + 'css/' },
+            { from: copyFromPath + 'bootstrap/dist/css/bootstrap.min.css.map', to: copyToPath + 'css/' },
+            { from: copyFromPath + 'bootstrap/dist/css/bootstrap-theme.min.css', to: copyToPath + 'css/' },
+            { from: copyFromPath + 'bootstrap/dist/css/bootstrap-theme.min.css.map', to: copyToPath + 'css/' },
+            { from: copyFromPath + 'bootstrap/dist/fonts/', to: copyToPath + 'fonts/' },
         ])
     ]
 };
