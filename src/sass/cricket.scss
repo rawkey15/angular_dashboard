@@ -1,0 +1,73 @@
+/*Cricket css*/
+
+$colors: ( lightblue: #428bca, lightgreen: #81ca42, white: #ffffff, lightgray: #eeeeee);
+@function style-variation($style) {
+    @if map-has-key($colors, $style) {
+        @return map-get($colors, $style);
+    }
+    @error "Invalid color: '#{$style}'.";
+}
+
+$min-width: 768px;
+$topborder-width: 4px;
+.cricket {
+    .extra-padding {
+        padding: 10px;
+    }
+    #playerInfoModal {
+        font-size: 12px;
+        table {
+            width: 84%;
+        }
+        .modal-content {
+            border-top: $topborder-width solid style-variation(lightgreen);
+        }
+        @media screen and (min-width: $min-width) {
+            .modal-dialog {
+                width: 80%;
+            }
+        }
+    }
+    .noborder {
+        border: none;
+    }
+    .panel {
+        .panel-body {
+            &.matchlist {
+                padding: 2px;
+                ul.nav.nav-pills li {
+                    margin-left: 0;
+                    margin-right: 0;
+                    font-size: 12px;
+                }
+            }
+        }
+        &.top-border {
+            border-top-width: $topborder-width;
+            &.green {
+                border-top-color: style-variation(lightgreen);
+            }
+            &.lightblue {
+                border-top-color: style-variation(lightblue);
+            }
+        }
+        &.bottom-border {
+            border-bottom-width: $topborder-width;
+            &.green {
+                border-bottom-color: style-variation(lightgreen);
+            }
+        }
+        &.right-border {
+            border-right-width: $topborder-width;
+            &.green {
+                border-right-color: style-variation(lightgreen);
+            }
+        }
+        &.left-border {
+            border-left-width: $topborder-width;
+            &.green {
+                border-left-color: style-variation(lightgreen);
+            }
+        }
+    }
+}

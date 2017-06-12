@@ -5,17 +5,12 @@ define(['uiRouter'], function(uiRouter, homeController) {
     require('./controllers/loginController');
     require('./directives/loginDirective');
     require('./services/localStorageService');
+    require('./services/httpRequestService');
 
-    dashboardApp.config(function($stateProvider, $urlRouterProvider, $controllerProvider,
-        $compileProvider, $filterProvider, $provide, $httpProvider) {
+    var cricketComp = require('./components/cricketComponent');
+    cricketComp();
 
-        dashboardApp.register = {
-            controller: $controllerProvider.register,
-            directive: $compileProvider.directive,
-            filter: $filterProvider.register,
-            factory: $provide.factory,
-            service: $provide.service
-        };
+    dashboardApp.config(function($stateProvider, $urlRouterProvider) {
 
         var defaultpage = {
             name: 'home',
@@ -24,17 +19,27 @@ define(['uiRouter'], function(uiRouter, homeController) {
             controller: 'homeController'
         };
 
-        var nopage = {
-            name: '404',
-            url: '/**',
-            template: '<h1>Page not found<h1>'
+        var cricketScorecard = {
+            name: 'scorecard',
+            url: '/scorecard',
+            template: '<cricket-component></cricket-component>'
         };
 
+        var localStorage = {
+            name: 'storage',
+            url: '/storage',
+            templateUrl: './assets/templates/localstorage.html',
+            controller: 'homeController'
+        };
+
+
+        /*TODO: set active sidebar, based on state*/
 
         $urlRouterProvider.otherwise('/');
 
         $stateProvider.state(defaultpage);
-        $stateProvider.state(nopage);
+        $stateProvider.state(cricketScorecard);
+        $stateProvider.state(localStorage);
     });
 
 });

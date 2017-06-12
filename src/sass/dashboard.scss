@@ -1,0 +1,82 @@
+$colors: ( lightblue: #428bca, whitesmoke: #f5f5f5, white: #ffffff, lightgray: #eeeeee);
+@function style-variation($style) {
+    @if map-has-key($colors, $style) {
+        @return map-get($colors, $style);
+    }
+    @error "Invalid color: '#{$style}'.";
+}
+
+$min-width: 768px;
+body {
+    padding-top: 50px;
+}
+
+a {
+    cursor: pointer;
+}
+
+.sub-header {
+    padding-bottom: 10px;
+    border-bottom: 1px solid style-variation(lightgrey);
+}
+
+
+/* Top navigation */
+
+.navbar-fixed-top {
+    border: 0;
+}
+
+
+/* Sidebar navigation */
+
+.sidebar {
+    display: none;
+    @media screen and (min-width: $min-width) {
+        position: fixed;
+        top: 51px;
+        bottom: 0;
+        left: 0;
+        z-index: 1000;
+        display: block;
+        padding: 20px;
+        overflow-x: hidden;
+        overflow-y: auto;
+        background-color: style-variation(whitesmoke);
+        border-right: 1px solid style-variation(lightgrey);
+    }
+}
+
+.nav-sidebar {
+    margin-right: -21px;
+    margin-bottom: 20px;
+    margin-left: -20px;
+}
+
+.nav-sidebar>li>a {
+    padding-right: 20px;
+    padding-left: 20px;
+}
+
+.nav-sidebar>.active>a,
+.nav-sidebar>.active>a:hover,
+.nav-sidebar>.active>a:focus {
+    color: style-variation(white);
+    background-color: style-variation(lightblue);
+}
+
+
+/* Main content*/
+
+$main-padding: 40px;
+.main {
+    padding: 20px;
+    @media screen and (min-width: $min-width) {
+        padding-right: $main-padding;
+        padding-left: $main-padding;
+    }
+}
+
+.main .page-header {
+    margin-top: 0;
+}

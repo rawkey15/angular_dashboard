@@ -14,12 +14,12 @@ module.exports = (function() {
             }
         }
 
-        userInfo(localStorageService.getData('login'));
+        userInfo(localStorageService.getData('db-login'));
 
 
         $scope.login = function() {
             if ($scope.loginModel.username && $scope.loginModel.password) {
-                localStorageService.addData('login', JSON.stringify({
+                localStorageService.addData('db-login', JSON.stringify({
                     user: $scope.loginModel.username,
                     logintime: new Date()
                 }));

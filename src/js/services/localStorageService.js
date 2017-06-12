@@ -31,11 +31,34 @@ module.exports = (function() {
                     addData(id, value);
                 };
 
+                var getAll = function() {
+                    return window.localStorage;
+                }
+                var getAllWildcard = function(wildcard) {
+                    var allItems = getAll();
+                    var wildcardData = [],
+                        keys = Object.keys(allItems),
+                        i = keys.length;
+
+                    while (i--) {
+                        if (keys[i].match(wildcard)) {
+                            var splitkey = keys[i].split(wildcard);
+                            wildcardData.push({
+                                key: splitkey[1],
+                                value: getData(keys[i])
+                            });
+                        }
+                    }
+                    return wildcardData;
+                };
+
                 return {
                     addData: addData,
                     getData: getData,
                     removeData: removeData,
-                    updateData: updateData
+                    updateData: updateData,
+                    getAll: getAll,
+                    getAllWildcard: getAllWildcard
                 }
 
             } else {
