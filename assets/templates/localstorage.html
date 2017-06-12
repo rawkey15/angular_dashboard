@@ -1,0 +1,53 @@
+<div class="container cricket">
+    <div class="row">
+        <div class="col-sm-10">
+            <h4>LocalStorage Demo</h4>
+            <p>Add sample key and value in the inputs below, and hit "Save" to save in LocalStorage.</p>
+            <p>And to delete from LocalStorage, add key and click on "Delete".</p>
+            <p>To update enter the exisiting key and change value. Then click on "Save".</p>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-sm-10">
+            <div class="row">
+                <div class="col-sm-2">
+                    <label>Key</label>
+                </div>
+                <div class="col-sm-4">
+                    <input type="text" ng-model="storage.key" placeholder="Enter key for local storage" maxlength="30">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-2">
+                    <label>Value</label>
+                </div>
+                <div class="col-sm-4">
+                    <input type="text" ng-model="storage.value" placeholder="Enter value for local storage" maxlength="30">
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-sm-2">
+                    <button type="button" class="btn btn-sm btn-success" ng-click="save()">Save</button>
+                </div>
+                <div class="col-sm-2">
+                    <button type="button" class="btn btn-sm btn-danger" ng-click="delete()">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-sm-10">
+            <h4>LocalStorage items</h4>
+            <ul class="list-group">
+                <li class="list-group-item" ng-repeat="storage in localStorage">
+                    <label>Key: {{storage.key}}</label><br/>
+                    <label>Value: {{storage.value}}</label>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+</div>
