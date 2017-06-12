@@ -16,10 +16,15 @@
     <link rel="stylesheet" href="dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="dist/css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="dist/css/main.css">
+
+    <script src="dist/js/lib/jquery.min.js"></script>
+    <script src="dist/js/lib/underscore-min.js"></script>
+    <script src="dist/js/lib/bootstrap.min.js"></script>
     <script src="dist/js/lib/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+
 </head>
 
-<body>
+<body ng-app="dashboardapp">
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
             <div class="navbar-header">
@@ -29,39 +34,43 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-                <a class="navbar-brand" href="#">Project name</a>
+                <a class="navbar-brand" href="#">Angular Dashboard</a>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
-                <form class="navbar-form navbar-right" role="form">
-                    <div class="form-group">
-                        <input type="text" placeholder="Email" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <input type="password" placeholder="Password" class="form-control">
-                    </div>
-                    <button type="submit" class="btn btn-success">Sign in</button>
-                </form>
+                <login-comp></login-comp>
             </div>
         </div>
     </nav>
-    <div class="jumbotron">
-        <div class="container">
-            <ui-view></ui-view>
-        </div>
-    </div>
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
-            <div class="col-md-12">
-                <h2>Sample Start page</h2>
-                <p>Add your own content to the template...</p>
+            <div class="col-sm-3 col-md-2 sidebar">
+                <ul class="nav nav-sidebar">
+                    <li class="active"><a ui-sref="home" class="sidebarnav">Overview </a></li>
+                    <li><a ui-sref="scorecard" class="sidebarnav">Cricket Scorecard</a></li>
+                    <li><a ui-sref="storage" class="sidebarnav">Local Storage</a></li>
+                </ul>
+            </div>
+            <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+                <h1 class="page-header">Dashboard</h1>
+                <ui-view></ui-view>
+                <!--<footer class="footer">
+                    <div class="container">
+                        <p class="text-muted">&copy; Rakesh 2017</p>
+                    </div>
+                </footer>-->
             </div>
         </div>
-        <hr>
-        <footer>
-            <p>&copy; Rakesh 2017</p>
-        </footer>
     </div>
-    <script src="dist/js/lib/require.js" data-main="dist/js/main"></script>
+    <script>
+        /*bootstarp nav sidebar, set active selection*/
+        $(document).ready(function() {
+            $('.sidebarnav').click(function(e) {
+                var $parent = $(e.currentTarget).parent('li');
+                $parent.addClass('active').siblings().removeClass('active');
+            });
+        });
+    </script>
+    <script src="dist/js/dashboard.js"></script>
 </body>
 
 </html>
