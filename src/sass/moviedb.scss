@@ -1,0 +1,154 @@
+/*MovieDB css*/
+
+$colors: ( lightblue: #428bca, black: #000000, white: #ffffff, red: #ff0000, lightgray: #eeeeee);
+@function style-variation($style) {
+    @if map-has-key($colors, $style) {
+        @return map-get($colors, $style);
+    }
+    @error "Invalid color: '#{$style}'.";
+}
+
+$min-width: 768px;
+$topborder-width: 4px;
+$carousel-min-height: 300px;
+$panel-img-min-height: 300;
+.moviedb {
+    .extra-padding {
+        padding: 10px;
+    }
+    .noborder {
+        border: none;
+    }
+    .carousel {
+        min-height: $carousel-min-height;
+        img.banner-poster {
+            width: 100%;
+            height: $carousel-min-height;
+        }
+        .header-text {
+            position: absolute;
+            bottom: 1%;
+            left: auto;
+            right: 0.5%;
+            color: style-variation(white);
+        }
+        .header-text h2 {
+            font-size: 32px;
+        }
+        .header-text h2 span {
+            background-color: style-variation(lightblue);
+            padding: 10px;
+        }
+    }
+    .panel {
+        &.top-border {
+            border-top-width: $topborder-width;
+            &.red {
+                border-top-color: style-variation(red);
+            }
+            &.lightblue {
+                border-top-color: style-variation(lightblue);
+            }
+        }
+        &.bottom-border {
+            border-bottom-width: $topborder-width;
+            &.red {
+                border-top-color: style-variation(red);
+            }
+            &.lightblue {
+                border-top-color: style-variation(lightblue);
+            }
+        }
+        &.right-border {
+            border-right-width: $topborder-width;
+            &.red {
+                border-top-color: style-variation(red);
+            }
+            &.lightblue {
+                border-top-color: style-variation(lightblue);
+            }
+        }
+        &.left-border {
+            border-left-width: $topborder-width;
+            &.red {
+                border-top-color: style-variation(red);
+            }
+            &.lightblue {
+                border-top-color: style-variation(lightblue);
+            }
+        }
+        .panel-body {
+            padding: 0;
+            img.banner-poster {
+                width: 100%;
+                height: $panel-img-min-height+px;
+                padding: 8px;
+            }
+            .panel-detail {
+                padding: 10px;
+                color: style-variation(black);
+                height: ($panel-img-min-height - 66)+px;
+                .overview {
+                    max-height: 40px;
+                    overflow: hidden;
+                }
+                .movie-rating {
+                    .star {
+                        color: style-variation(lightblue);
+                    }
+                }
+            }
+        }
+    }
+    .movie-info {
+        padding: 4px;
+        .trailer-window {
+            iframe: {
+                width: auto;
+            }
+        }
+    }
+    .search {
+        padding: 2px;
+        width: auto;
+        .movie-home {
+            color: style-variation(lightblue);
+            padding: 0 20px;
+            cursor: pointer;
+        }
+        .searchBox {
+            width: 100%;
+            padding: 7px 0px;
+            border-style: solid;
+            border-color: style-variation(lightblue);
+        }
+        .searchTitle {
+            margin: 0px;
+            padding: 6px 0px;
+            font-size: 18px;
+            display: inline-block;
+            color: style-variation(lightblue);
+        }
+        .top-Container {
+            margin: 20px 0px;
+            background-color: #142952;
+            padding: 7px 0px 5px 0px;
+        }
+        .bottom-Container {
+            margin-bottom: 10px;
+            color: #0077CC;
+            img {
+                width: 150px;
+                height: 214px;
+            }
+        }
+        .errorText {
+            color: style-variation(red);
+            font-size: 16px;
+        }
+    }
+    &container {
+        border: 1px solid style-variation(lightgray);
+        border-radius: 5px;
+    }
+}

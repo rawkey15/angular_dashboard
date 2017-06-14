@@ -1,0 +1,165 @@
+<div class="container moviedb" ng-init="getMoviesList()">
+    <div class="row">
+        <div class="col-sm-10">
+            <div class="container search">
+                <div class="row top-Container">
+                    <div class="col-sm-3">
+                        <span class="glyphicon glyphicon-home movie-home" ng-click="movieHome()"></span>
+                        <span class="searchTitle">Search Movie:</span>
+                    </div>
+                    <div class="col-sm-6">
+                        <input type="text" ng-keyup="$event.keyCode == 13 && getMovieDetails()" ng-model="movieName" class="searchBox">
+                    </div>
+                    <div class="col-sm-2">
+                        <button type="button" class="btn btn-info" ng-click="getMovieDetails()">
+                            <span class="glyphicon glyphicon-search"></span> Search
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div id="movielist-carousel" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner" role="listbox">
+                    <div class="item" ng-class="{ active: $index == 0}" ng-repeat="movies in movieslist.results">
+                        <img class="banner-poster" src="https://image.tmdb.org/t/p/w600{{movies.backdrop_path}}" alt="{{movies.title}}">
+                        <div class="header-text hidden-xs">
+                            <div class="col-md-12 text-center">
+                                <h2>
+                                    <span><strong ng-bind="movies.title"></strong></span>
+                                </h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <a class="left carousel-control" href="#movielist-carousel" role="button" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="right carousel-control" href="#movielist-carousel" role="button" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-10">
+            <hr>
+            <div ng-switch on="movieview">
+                <div class="row" ng-switch-when="main">
+                    <div class="col-sm-6" ng-repeat="movie in movieslist.results">
+                        <div class="panel panel-default top-border lightblue">
+                            <div class="panel-body">
+                                <img class="banner-poster" src="https://image.tmdb.org/t/p/w300{{movie.poster_path}}" alt="{{movie.title}}">
+                                <div class="panel-detail">
+                                    <p>
+                                        <h4 ng-bind="movie.title"></h4>
+                                        <p class="movie-rating" ng-init="popularity(movie.popularity, $index)">
+                                            <span class="glyphicon glyphicon-star-empty star"></span>
+                                            <span class="glyphicon glyphicon-star-empty star"></span>
+                                            <span class="glyphicon glyphicon-star-empty star"></span>
+                                            <span class="glyphicon glyphicon-star-empty star"></span>
+                                            <span class="glyphicon glyphicon-star-empty star"></span>
+                                        </p>
+                                    </p>
+                                    <br>
+                                    <p class="overview" ng-bind="movie.overview"></p>
+                                    <a ng-click="movieInfo($event)" id="{{movie.id}}">Read more..</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" ng-switch-when="info">
+                    <div class="col-sm-12">
+                        <div class="panel panel-info">
+                            <div class="panel-heading">
+                                <p>
+                                    <span class="glyphicon glyphicon-film"></span>
+                                    <span class="panel-title" ng-bind="moviedetail.original_title"></span>
+                                </p>
+                                <p>
+                                    <span>R</span><span> | </span>
+                                    <span ng-bind="moviedetail.runtime"></span><span> mins |</span>
+                                    <span ng-repeat="g in moviedetail.genres"> 
+                                        <span ng-bind="g.name"></span>&nbsp;
+                                    </span><span>| </span>
+                                    <span ng-bind="moviedetail.release_date"></span>
+                                </p>
+                            </div>
+                            <div class="panel-body">
+                                <div class="movie-info">
+                                    <div class="row">
+                                        <div class="col-sm-2">
+                                            <img src="https://image.tmdb.org/t/p/w150{{moviedetail.poster_path}}" alt="{{moviedetail.title}}" />
+                                        </div>
+                                        <div class="col-sm-8">
+                                            <div class="container">
+                                                <div class="row">
+                                                    <div class="col-sm-8">
+                                                        <p ng-bind="moviedetail.overview"></p>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-sm-8">
+                                                        <p><strong>Status:</strong> <span ng-bind="moviedetail.overview"></span></p>
+                                                        <p><strong>Budget:</strong> $<span ng-bind="moviedetail.budget"></span></p>
+                                                        <p>
+                                                            <u><strong>Production Companies:</strong></u>
+                                                            <div ng-repeat="pc in moviedetail.production_companies">
+                                                                <p ng-bind="pc.name"></p>
+                                                            </div>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-sm-6 trailer-window" ng-repeat="video in moviedetail.videos.results">
+                                                    <div ng-init="iframelink(video.key)">
+                                                        <div ng-bind-html="trustedvideolink"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class=" row " ng-switch-when="search">
+                    <div class="col-sm-12 ">
+                        <div class="container search ">
+                            <div class="row " ng-hide="hideError ">
+                                <div class="col-sm-12 ">
+                                    <span class="errorText ">Please enter a valid input.</span>
+                                </div>
+                            </div>
+                            <div class="row bottom-Container " ng-show="showDetails " ng-repeat="data in content ">
+                                <div class="col-sm-3 ">
+                                    <div class="row ">
+                                        <div class="col-sm-12 ">
+                                            <b>Title: </b><span ng-bind="data.title "></span>
+                                        </div>
+                                    </div>
+                                    <div class="row ">
+                                        <div class="col-sm-12 ">
+                                            <span><img src="https://image.tmdb.org/t/p/w150{{data.poster_path}} " alt="{{data.title}} " /></span></div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-3 "><b>Ratting: </b><span ng-bind="data.vote_average "></span></div>
+                                <div class="col-sm-6 "><b>Overview: </b><span ng-bind="data.overview "></span>
+                                    <br/>
+                                    <span>
+                                    <strong><a ng-click="movieInfo($event) " id="{{data.id}} " >Read more..</a></strong>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
