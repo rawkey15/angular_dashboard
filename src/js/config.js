@@ -1,4 +1,4 @@
-define(['uiRouter'], function(uiRouter, homeController) {
+define(['uiRouter'], function(uiRouter) {
     dashboardApp = angular.module('dashboardapp', ['ui.router']);
 
     require('./controllers/homeController');
@@ -7,10 +7,12 @@ define(['uiRouter'], function(uiRouter, homeController) {
     require('./services/localStorageService');
     require('./services/httpRequestService');
 
-    var cricketComp = require('./components/cricketComponent');
-    cricketComp();
 
-    dashboardApp.config(function($stateProvider, $urlRouterProvider) {
+    dashboardApp.component('cricketComponent', require('./components/cricketComponent'));
+    dashboardApp.component('moviedbComponent', require('./components/moviedbComponent'));
+
+    dashboardApp.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
+        $locationProvider.html5Mode(true);
 
         var defaultpage = {
             name: 'home',
@@ -23,6 +25,12 @@ define(['uiRouter'], function(uiRouter, homeController) {
             name: 'scorecard',
             url: '/scorecard',
             template: '<cricket-component></cricket-component>'
+        };
+
+        var movieDb = {
+            name: 'moviedb',
+            url: '/moviedb',
+            template: '<moviedb-component></moviedb-component>'
         };
 
         var localStorage = {
@@ -39,6 +47,7 @@ define(['uiRouter'], function(uiRouter, homeController) {
 
         $stateProvider.state(defaultpage);
         $stateProvider.state(cricketScorecard);
+        $stateProvider.state(movieDb);
         $stateProvider.state(localStorage);
     });
 

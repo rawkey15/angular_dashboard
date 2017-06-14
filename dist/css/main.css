@@ -100,141 +100,128 @@ a {
 .main .page-header {
   margin-top: 0; }
 body {
-  padding-top: 50px; }
+  background-color: #ffffff;
+  padding-top: 50px;
+  padding-bottom: 20px; }
 
-a {
-  cursor: pointer; }
+.message, .success, .error, .warning {
+  border: 1px solid #ccc;
+  padding: 10px;
+  color: #333; }
 
-.sub-header {
-  padding-bottom: 10px;
-  border-bottom: 1px solid #eeeeee; }
+.success {
+  border-color: green; }
 
-/* Top navigation */
-.navbar-fixed-top {
-  border: 0; }
+.error {
+  border-color: red; }
 
-/* Sidebar navigation */
-.sidebar {
-  display: none; }
-  @media screen and (min-width: 768px) {
-    .sidebar {
-      position: fixed;
-      top: 51px;
-      bottom: 0;
-      left: 0;
-      z-index: 1000;
-      display: block;
-      padding: 20px;
-      overflow-x: hidden;
-      overflow-y: auto;
-      background-color: #f5f5f5;
-      border-right: 1px solid #eeeeee; } }
-
-.nav-sidebar {
-  margin-right: -21px;
-  margin-bottom: 20px;
-  margin-left: -20px; }
-
-.nav-sidebar > li > a {
-  padding-right: 20px;
-  padding-left: 20px; }
-
-.nav-sidebar > .active > a,
-.nav-sidebar > .active > a:hover,
-.nav-sidebar > .active > a:focus {
-  color: #ffffff;
-  background-color: #428bca; }
-
-/* Main content*/
-.main {
-  padding: 20px; }
-  @media screen and (min-width: 768px) {
-    .main {
-      padding-right: 40px;
-      padding-left: 40px; } }
-
-.main .page-header {
-  margin-top: 0; }
-
-/*Cricket css*/
-.cricket .extra-padding {
+.warning {
+  border-color: yellow; }
+/*MovieDB css*/
+.moviedb .extra-padding {
   padding: 10px; }
 
-.cricket #playerInfoModal {
-  font-size: 12px; }
-  .cricket #playerInfoModal table {
-    width: 84%; }
-  .cricket #playerInfoModal .modal-content {
-    border-top: 4px solid #81ca42; }
-  @media screen and (min-width: 768px) {
-    .cricket #playerInfoModal .modal-dialog {
-      width: 80%; } }
-
-.cricket .noborder {
+.moviedb .noborder {
   border: none; }
 
-.cricket .panel .panel-body.matchlist {
-  padding: 2px; }
-  .cricket .panel .panel-body.matchlist ul.nav.nav-pills li {
-    margin-left: 0;
-    margin-right: 0;
-    font-size: 12px; }
+.moviedb .carousel {
+  min-height: 300px; }
+  .moviedb .carousel img.banner-poster {
+    width: 100%;
+    height: 300px; }
+  .moviedb .carousel .header-text {
+    position: absolute;
+    bottom: 1%;
+    left: auto;
+    right: 0.5%;
+    color: #ffffff; }
+  .moviedb .carousel .header-text h2 {
+    font-size: 32px; }
+  .moviedb .carousel .header-text h2 span {
+    background-color: #428bca;
+    padding: 10px; }
 
-.cricket .panel.top-border {
+.moviedb .panel.top-border {
   border-top-width: 4px; }
-  .cricket .panel.top-border.green {
-    border-top-color: #81ca42; }
-  .cricket .panel.top-border.lightblue {
+  .moviedb .panel.top-border.red {
+    border-top-color: #ff0000; }
+  .moviedb .panel.top-border.lightblue {
     border-top-color: #428bca; }
 
-.cricket .panel.bottom-border {
+.moviedb .panel.bottom-border {
   border-bottom-width: 4px; }
-  .cricket .panel.bottom-border.green {
-    border-bottom-color: #81ca42; }
+  .moviedb .panel.bottom-border.red {
+    border-top-color: #ff0000; }
+  .moviedb .panel.bottom-border.lightblue {
+    border-top-color: #428bca; }
 
-.cricket .panel.right-border {
+.moviedb .panel.right-border {
   border-right-width: 4px; }
-  .cricket .panel.right-border.green {
-    border-right-color: #81ca42; }
+  .moviedb .panel.right-border.red {
+    border-top-color: #ff0000; }
+  .moviedb .panel.right-border.lightblue {
+    border-top-color: #428bca; }
 
-.cricket .panel.left-border {
+.moviedb .panel.left-border {
   border-left-width: 4px; }
-  .cricket .panel.left-border.green {
-    border-left-color: #81ca42; }
+  .moviedb .panel.left-border.red {
+    border-top-color: #ff0000; }
+  .moviedb .panel.left-border.lightblue {
+    border-top-color: #428bca; }
 
-body {
-  background-color: #ffffff;
-  padding-top: 50px;
-  padding-bottom: 20px; }
+.moviedb .panel .panel-body {
+  padding: 0; }
+  .moviedb .panel .panel-body img.banner-poster {
+    width: 100%;
+    height: 300px;
+    padding: 8px; }
+  .moviedb .panel .panel-body .panel-detail {
+    padding: 10px;
+    color: #000000;
+    height: 234px; }
+    .moviedb .panel .panel-body .panel-detail .overview {
+      max-height: 40px;
+      overflow: hidden; }
+    .moviedb .panel .panel-body .panel-detail .movie-rating .star {
+      color: #428bca; }
 
-.message, .success, .error, .warning {
-  border: 1px solid #ccc;
-  padding: 10px;
-  color: #333; }
+.moviedb .movie-info {
+  padding: 4px; }
+  .moviedb .movie-info .trailer-window {
+    iframe-width: auto; }
 
-.success {
-  border-color: green; }
+.moviedb .search {
+  padding: 2px;
+  width: auto; }
+  .moviedb .search .movie-home {
+    color: #428bca;
+    padding: 0 20px;
+    cursor: pointer; }
+  .moviedb .search .searchBox {
+    width: 100%;
+    padding: 7px 0px;
+    border-style: solid;
+    border-color: #428bca; }
+  .moviedb .search .searchTitle {
+    margin: 0px;
+    padding: 6px 0px;
+    font-size: 18px;
+    display: inline-block;
+    color: #428bca; }
+  .moviedb .search .top-Container {
+    margin: 20px 0px;
+    background-color: #142952;
+    padding: 7px 0px 5px 0px; }
+  .moviedb .search .bottom-Container {
+    margin-bottom: 10px;
+    color: #0077CC; }
+    .moviedb .search .bottom-Container img {
+      width: 150px;
+      height: 214px; }
+  .moviedb .search .errorText {
+    color: #ff0000;
+    font-size: 16px; }
 
-.error {
-  border-color: red; }
-
-.warning {
-  border-color: yellow; }
-body {
-  background-color: #ffffff;
-  padding-top: 50px;
-  padding-bottom: 20px; }
-
-.message, .success, .error, .warning {
-  border: 1px solid #ccc;
-  padding: 10px;
-  color: #333; }
-
-.success {
-  border-color: green; }
-
-.error {
-  border-color: red; }
-
-.warning {
-  border-color: yellow; }
+.moviedbcontainer {
+  border: 1px solid #eeeeee;
+  border-radius: 5px; }
