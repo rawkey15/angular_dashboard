@@ -125,7 +125,8 @@ body {
   border: none; }
 
 .moviedb .carousel {
-  min-height: 300px; }
+  min-height: 300px;
+  box-shadow: 3px 7px 7px -3px #808080; }
   .moviedb .carousel img.banner-poster {
     width: 100%;
     height: 300px; }
@@ -139,10 +140,12 @@ body {
     font-size: 32px; }
   .moviedb .carousel .header-text h2 span {
     background-color: #428bca;
-    padding: 10px; }
+    padding: 10px;
+    text-shadow: 1px 2px 1px #000000; }
 
 .moviedb .panel.top-border {
-  border-top-width: 4px; }
+  border-top-width: 4px;
+  box-shadow: 4px 4px #eeeeee; }
   .moviedb .panel.top-border.red {
     border-top-color: #ff0000; }
   .moviedb .panel.top-border.lightblue {
@@ -174,7 +177,11 @@ body {
   .moviedb .panel .panel-body img.banner-poster {
     width: 100%;
     height: 300px;
-    padding: 8px; }
+    padding: 8px;
+    -webkit-transition: height 2.5s;
+    transition: height 2.5s; }
+    .moviedb .panel .panel-body img.banner-poster:hover {
+      height: 366px; }
   .moviedb .panel .panel-body .panel-detail {
     padding: 10px;
     color: #000000;
@@ -217,7 +224,12 @@ body {
     color: #0077CC; }
     .moviedb .search .bottom-Container img {
       width: 150px;
-      height: 214px; }
+      height: 214px;
+      -webkit-transition: width 2s, height 2s;
+      transition: width 2s, height 2s; }
+      .moviedb .search .bottom-Container img:hover {
+        width: 250px;
+        height: 314px; }
   .moviedb .search .errorText {
     color: #ff0000;
     font-size: 16px; }
