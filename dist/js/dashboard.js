@@ -144,7 +144,8 @@ var moviedbComponent = {
         $scope.movieview = "main";
 
         $scope.getMoviesList = function() {
-            $http.get('https://moviedb-api.herokuapp.com/movieslist').then(function(response) {
+		//https://master.d3trmw2rvu0nyi.amplifyapp.com
+            $http.get('https://master.d3trmw2rvu0nyi.amplifyapp.com/movieslist').then(function(response) {
                 $scope.movieslist = response.data;
             });
         }
@@ -155,7 +156,7 @@ var moviedbComponent = {
                 $scope.content = [];
             } else {
                 $scope.hideError = true;
-                $http.get('https://moviedb-api.herokuapp.com/search/' + $scope.movieName).then(function(response) {
+                $http.get('https://master.d3trmw2rvu0nyi.amplifyapp.com/search/' + $scope.movieName).then(function(response) {
                     $scope.content = response.data.results;
                 });
             }
@@ -176,7 +177,7 @@ var moviedbComponent = {
         $scope.moviedetail = '';
         $scope.movieInfo = function(e) {
             var movieId = $(e.currentTarget).attr('id');
-            $http.get('https://moviedb-api.herokuapp.com/movie/' + movieId).then(function(response) {
+            $http.get('https://master.d3trmw2rvu0nyi.amplifyapp.com/movie/' + movieId).then(function(response) {
                 $scope.moviedetail = response.data;
                 $scope.movieview = 'info';
             });
